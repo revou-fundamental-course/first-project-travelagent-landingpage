@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Travel Website</title>
+</head>
+<body>
+    <header>
+        <!-- .navSection -->
+        <section class="header-container">
+            <button>Logo</button>
+            <div id="menu">
+                <button>Home</button>
+                <button>Our Package</button>
+                <button>Contact Us</button>
+            </div>
+        </section>
+        <!-- titleSection -->
+        <section class="title-container">
+            <h1 id="title-header">Travel Agent's</h1>
+            <h3 id="subtitle">This is my Travel Agent's Website</h3>
+        </section>
+    </header>
+    <main>
+        <section class="home">
+            <!-- left-Content -->
+            <article class="left-content">
+                <div class="slider">
+                    <img class="slides" src="./Assets/danautoba.jpg" alt="pictures-1">
+                    <img class="slides" src="./Assets/labuanbajo.jpg" alt="pictures-2">
+                    <img class="slides" src="./Assets/rajaampat.jpg" alt="pictures-3">
+                </div>
+
+                <script>
+                    var slideIndex = 1;
+                    slideWrapper(slideIndex);
+
+                    function sliderPlus(n){
+                        slideWrapper((slideIndex += n));
+                    }
+
+                    function slideWrapper(n){
+                        var i;
+                        var imgList = document.getElementsByClassName('slides');
+                        if(n > imgList.length) slideIndex=1;
+                        else if (n < 1) slideIndex = imgList.length;
+
+                        for(i=0; i<imgList.length; i++){
+                            imgList[i].style.display = 'none';
+                        }
+
+                        imgList[slideIndex - 1].style.display = 'block';
+                    }
+
+                    setInterval(() => {
+                        sliderPlus(1)
+                    }, 1000)
+                </script>
+
+            </article>
+            <!-- Right-Content -->
+            <article class="right-content">
+                <h3>Contact Us</h3>
+                <p>Data akan di proses dan pihak kami akan menghubungi anda
+                    setelah data telah diterima selama 1x24 jam
+                </p>
+            <section id="form">
+                <form name="input-form" onsubmit="return validateForm()">
+                    <label for="name"><b>Your Name:</b></label><br>
+                    <input type="text" id="name" name="full-name"><br><br>
+                    <label for="email"><b>Email Address:</b></label><br>
+                    <input type="text" id="email" name="user-email"><br><br>
+                    <label for="destination"><b>What are you interested in?</b></label><br>
+                        <select id="destination">
+                            <option value="destination"></option>
+                            <option value="danautoba">Danau Toba</option>
+                            <option value="labuanbajo">Labuan Bajo</option>
+                            <option value="rajaampat">Raja Ampat</option>
+                        </select>
+                        <br><br>
+                    <input type="submit" id="submit-button" value="SEND">
+                </form>
+                <script>
+                    function validateForm(){
+                        var name = document.forms['input-form']['full-name'].value;
+                        var email = document.forms['input-form']['user-email'].value;
+
+                        if(name == "" || email == ""){
+                            alert("Input tidak boleh kosong!")
+                        }
+                        return false;
+                    }
+                </script>
+            </section>
+            </article>
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+</html>
